@@ -1,8 +1,8 @@
-# Maison Serein — Software Engineering Documentation
+# THE LAST NOTE BD — Software Engineering Documentation
 
 ## Project overview
 
-Maison Serein is a server-rendered perfume storefront and staff studio for XAMPP. It uses Core PHP, PDO, MySQL/MariaDB, HTML, CSS, and vanilla JavaScript. Customers can browse and order as guests; optional customer accounts support saved addresses, wishlist synchronization, and order history. Staff authentication is separate from customer authentication.
+THE LAST NOTE BD is a server-rendered perfume storefront and staff studio for XAMPP. It uses Core PHP, PDO, MySQL/MariaDB, HTML, CSS, and vanilla JavaScript. Customers can browse and order as guests; optional customer accounts support saved addresses, wishlist synchronization, and order history. Staff authentication is separate from customer authentication.
 
 ### Problem statement
 
@@ -160,7 +160,7 @@ classDiagram
 
 ```mermaid
 flowchart LR
-  Customer[Customer] -->|search, account, cart, checkout, tracking| System[Maison Serein]
+  Customer[Customer] -->|search, account, cart, checkout, tracking| System[THE LAST NOTE BD]
   Admin[Administrator] -->|catalogue, stock, orders, settings| System
   System -->|pages, order status, validation messages| Customer
   System -->|studio views and reports| Admin

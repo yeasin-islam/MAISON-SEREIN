@@ -74,7 +74,7 @@ MAIL_USERNAME=your-brevo-smtp-login
 MAIL_PASSWORD=your-brevo-smtp-key
 MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS=verified-sender@example.com
-MAIL_FROM_NAME="Maison Serein"
+MAIL_FROM_NAME="THE LAST NOTE BD"
 ```
 
 Verify the sender address/domain in Brevo before testing. Keep SMTP credentials only in `.env`; do not commit them or enter them in the browser. Order email delivery happens after the order transaction commits. A delivery failure leaves the order confirmed, is recorded in Studio → Orders, and can be retried by an administrator. The local demo URL uses HTTP, so product images are omitted from emails unless `APP_URL` is configured with a public HTTPS origin.

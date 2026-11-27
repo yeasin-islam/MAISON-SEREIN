@@ -10,7 +10,7 @@ $flashMessage = take_flash();
 try {
     $pdo = database();
 } catch (Throwable $error) {
-    error_log('[Maison Serein] Studio database unavailable: ' . $error->getMessage());
+    error_log('[THE LAST NOTE BD] Studio database unavailable: ' . $error->getMessage());
     $pdo = null;
 }
 if ($page === 'login' && !empty($_SESSION['admin_id'])) redirect('index.php?page=dashboard');

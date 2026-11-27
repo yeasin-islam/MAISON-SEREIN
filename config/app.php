@@ -23,7 +23,7 @@ function load_app_env(string $path): void
 
 load_app_env(dirname(__DIR__) . '/.env');
 
-define('APP_NAME', getenv('APP_NAME') ?: 'Maison Serein');
+define('APP_NAME', getenv('APP_NAME') ?: 'THE LAST NOTE BD');
 define('APP_CURRENCY', getenv('APP_CURRENCY') ?: 'BDT');
 define('APP_TIMEZONE', getenv('APP_TIMEZONE') ?: 'Asia/Dhaka');
 date_default_timezone_set(APP_TIMEZONE);

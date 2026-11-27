@@ -8,21 +8,27 @@ $pageTitle = $page === 'faq' ? 'FAQ' : ucfirst($page === 'home' ? APP_NAME : str
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f2ed">
-  <meta name="description" content="Discover considered fragrance, crafted for the moments that are yours.">
-  <title><?= h($pageTitle . ' — Maison Serein') ?></title>
+  <meta name="description" content="The Last Note BD - authentic fragrance decant house in Dhaka.">
+  <meta property="og:title" content="<?= h($pageTitle . ' — THE LAST NOTE BD') ?>">
+  <meta property="og:description" content="AUTHENTIC FRAGRANCE DECANT HOUSE">
+  <title><?= h($pageTitle . ' — THE LAST NOTE BD') ?></title>
+  <link rel="icon" href="assets/images/the-last-note-logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/store.css">
+  <link rel="stylesheet" href="assets/css/store.css?v=2">
   <link rel="stylesheet" href="assets/css/store-extras.css"><link rel="stylesheet" href="assets/css/store-account.css">
-  <link rel="stylesheet" href="assets/css/store-interactions.css">
-  <link rel="stylesheet" href="assets/css/store-redesign.css?v=16">
+  <link rel="stylesheet" href="assets/css/store-interactions.css?v=6">
+  <link rel="stylesheet" href="assets/css/store-redesign.css?v=19">
 </head>
 <body>
 <div class="announcement">Complimentary delivery on orders over ৳5,000 <span aria-hidden="true">—</span> A little something, on us.</div>
 <header class="site-header">
   <div class="header-inner">
-    <a class="wordmark" href="<?= h(app_url('home')) ?>" aria-label="Maison Serein home">MAISON <span>SEREIN</span><small>FRAGRANCE, CONSIDERED</small></a>
+    <a class="wordmark brand-lockup" href="<?= h(app_url('home')) ?>" aria-label="THE LAST NOTE BD home">
+      <img class="brand-logo" src="assets/images/the-last-note-logo.svg" alt="" width="44" height="44">
+      <span class="brand-copy"><span class="brand-name"><span>THE LAST</span><span>NOTE BD</span></span><small>AUTHENTIC FRAGRANCE DECANT HOUSE</small></span>
+    </a>
     <button class="mobile-menu-button" type="button" aria-label="Open navigation" aria-expanded="false" data-menu-toggle><span></span><span></span></button>
     <nav class="main-nav" aria-label="Main navigation" data-main-nav>
       <a class="<?= $page === 'shop' ? 'is-current' : '' ?>" href="<?= h(app_url('shop')) ?>">Shop all</a>

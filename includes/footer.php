@@ -2,7 +2,10 @@
 <footer class="site-footer">
   <div class="footer-main">
     <div class="footer-brand">
-      <a class="wordmark wordmark-light" href="<?= h(app_url('home')) ?>">MAISON <span>SEREIN</span><small>FRAGRANCE, CONSIDERED</small></a>
+      <a class="wordmark brand-lockup wordmark-light" href="<?= h(app_url('home')) ?>" aria-label="THE LAST NOTE BD home">
+        <img class="brand-logo" src="assets/images/the-last-note-logo.svg" alt="" width="44" height="44">
+        <span class="brand-copy"><span class="brand-name"><span>THE LAST</span><span>NOTE BD</span></span><small>AUTHENTIC FRAGRANCE DECANT HOUSE</small></span>
+      </a>
       <p>Quiet compositions, made to feel like your own.</p>
       <div class="footer-contact">
         <?php if ($storeContactEmail): ?><a href="mailto:<?= h($storeContactEmail) ?>"><?= h($storeContactEmail) ?></a><?php endif; ?>
@@ -19,9 +22,18 @@
       <p class="form-message" aria-live="polite"></p>
     </form></div>
   </div>
-  <div class="footer-bottom"><span>© <?= date('Y') ?> Maison Serein. Made with care.</span><span>Dhaka, Bangladesh</span><a href="admin/index.php">Studio login</a></div>
+  <div class="footer-bottom"><span>© <?= date('Y') ?> THE LAST NOTE BD. Made with care.</span><span>Dhaka, Bangladesh</span><a href="admin/index.php">Studio login</a></div>
 </footer>
+<button class="scroll-progress" type="button" aria-label="Scroll to top" title="Back to top" hidden data-scroll-progress>
+  <svg class="scroll-progress-ring" aria-hidden="true" viewBox="0 0 48 48">
+    <circle class="scroll-progress-track" cx="24" cy="24" r="21" />
+    <circle class="scroll-progress-value" cx="24" cy="24" r="21" data-scroll-progress-ring />
+  </svg>
+  <svg class="scroll-progress-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 19V5M6.5 10.5 12 5l5.5 5.5" />
+  </svg>
+</button>
 <div class="toast-region" role="status" aria-live="polite" aria-atomic="true" data-toast></div>
-<script src="assets/js/store.js?v=8" defer></script>
+<script src="assets/js/store.js?v=14" defer></script>
 </body>
 </html>

@@ -11,7 +11,7 @@
   <div class="house-intro-label"><span class="eyebrow">Our story</span><span class="house-index">01 / 04</span></div>
   <div class="house-intro-copy">
     <h2>A scent can be a kind of memory.</h2>
-    <p>Maison Serein is a fragrance house based in Dhaka. The collection brings together compositions for different tastes and occasions.</p>
+    <p>THE LAST NOTE BD is an authentic fragrance decant house based in Dhaka. The collection brings together compositions for different tastes and occasions.</p>
     <p>Explore each fragrance through its product description, family, and listed notes to find what feels right for you.</p>
   </div>
 </section>

@@ -81,7 +81,7 @@ try {
                 $emailResult = (new OrderConfirmationEmailService($pdo))->sendForOrder((int) $order['id']);
                 $order['email_status'] = $emailResult['status'];
             } catch (Throwable $emailError) {
-                error_log('[Maison Serein] Could not process confirmation email for order ' . (int) $order['id'] . ' (' . get_class($emailError) . ').');
+                error_log('[THE LAST NOTE BD] Could not process confirmation email for order ' . (int) $order['id'] . ' (' . get_class($emailError) . ').');
                 $order['email_status'] = 'failed';
             }
             $_SESSION['last_order'] = $order;
@@ -479,13 +479,13 @@ try {
             } catch (InvalidArgumentException $error) {
                 json_response(['ok' => false, 'message' => $error->getMessage()], 422);
             } catch (PDOException $error) {
-                error_log('[Maison Serein] Database request failed: ' . $error->getMessage());
+                error_log('[THE LAST NOTE BD] Database request failed: ' . $error->getMessage());
                 json_response(['ok' => false, 'message' => 'Something went wrong. Please try again.'], 500);
             } catch (RuntimeException $error) {
                 if ($error->getMessage() === 'Your session expired. Refresh the page and try again.') {
                     json_response(['ok' => false, 'message' => $error->getMessage()], 419);
                 }
-                error_log('[Maison Serein] Request failed: ' . $error->getMessage());
+                error_log('[THE LAST NOTE BD] Request failed: ' . $error->getMessage());
                 json_response(['ok' => false, 'message' => 'Something went wrong. Please try again.'], 500);
             } catch (Throwable $error) {
                 if ($pdo->inTransaction()) $pdo->rollBack();
@@ -1036,9 +1036,9 @@ try {
 } catch (InvalidArgumentException|RuntimeException $error) {
     json_response(['ok' => false, 'message' => $error->getMessage()], 422);
 } catch (PDOException $error) {
-    error_log('[Maison Serein] Database action failed: ' . $error->getMessage());
+    error_log('[THE LAST NOTE BD] Database action failed: ' . $error->getMessage());
     json_response(['ok' => false, 'message' => 'We couldn’t complete that request. Please try again.'], 500);
 } catch (Throwable $error) {
-    error_log('[Maison Serein] Request failed: ' . $error->getMessage());
+    error_log('[THE LAST NOTE BD] Request failed: ' . $error->getMessage());
     json_response(['ok' => false, 'message' => 'Something went wrong. Please try again.'], 500);
 }

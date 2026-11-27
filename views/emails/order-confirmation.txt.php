@@ -1,7 +1,9 @@
 <?php
 $formatAmount = static fn($value): string => 'BDT ' . number_format((float) $value, 2);
 ?>
-MAISON SEREIN
+THE LAST
+NOTE BD
+AUTHENTIC FRAGRANCE DECANT HOUSE
 ORDER CONFIRMATION
 
 Thank you, <?= $order['customer_name'] ?>. Your order is confirmed.
@@ -32,7 +34,7 @@ DELIVERY
 Payment: <?= strtoupper((string) $order['payment_method']) ?> (<?= ucwords(str_replace('_', ' ', (string) $order['payment_status'])) ?>)
 Order status: <?= ucfirst((string) $order['order_status']) ?>
 
-Thank you for choosing Maison Serein.
+Thank you for choosing THE LAST NOTE BD.
 <?php if ($supportEmail !== '' || $supportPhone !== ''): ?>
 Customer care: <?= $supportEmail ?><?= $supportEmail !== '' && $supportPhone !== '' ? ' / ' : '' ?><?= $supportPhone ?>
 <?php endif; ?>

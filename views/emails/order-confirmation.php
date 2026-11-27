@@ -8,19 +8,19 @@ $formatAmount = static fn($value): string => '৳' . number_format((float) $valu
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Order Confirmation — Maison Serein</title>
+    <title>Order Confirmation — THE LAST NOTE BD</title>
 </head>
 
 <body style="margin:0;padding:0;background:#f4f1eb;color:#27251f;font-family:Arial,Helvetica,sans-serif;">
-    <div style="display:none;max-height:0;overflow:hidden;opacity:0;">Your Maison Serein order <?= $escape($order['order_number']) ?> is confirmed.</div>
+    <div style="display:none;max-height:0;overflow:hidden;opacity:0;">Your THE LAST NOTE BD order <?= $escape($order['order_number']) ?> is confirmed.</div>
     <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background:#f4f1eb;padding:28px 12px;">
         <tr>
             <td align="center">
                 <table role="presentation" width="640" cellspacing="0" cellpadding="0" border="0" style="width:100%;max-width:640px;background:#fff;">
                     <tr>
                         <td align="center" style="padding:34px 24px 26px;background:#28271f;color:#fff;">
-                            <div style="font-family:Georgia,'Times New Roman',serif;font-size:19px;letter-spacing:4px;">MAISON SEREIN</div>
-                            <div style="margin-top:8px;color:#d4c8ad;font-size:10px;letter-spacing:3px;">A QUIETER KIND OF LUXURY</div>
+                            <div style="font-family:Georgia,'Times New Roman',serif;font-size:20px;line-height:1.15;letter-spacing:3px;color:#F7F4EC;"><span style="display:block;">THE LAST</span><span style="display:block;">NOTE BD</span></div>
+                            <div style="margin-top:8px;color:#d4c8ad;font-size:11px;letter-spacing:3px;">AUTHENTIC FRAGRANCE DECANT HOUSE</div>
                         </td>
                     </tr>
                     <tr>
@@ -100,7 +100,8 @@ $formatAmount = static fn($value): string => '৳' . number_format((float) $valu
                     </tr>
                     <tr>
                         <td align="center" style="padding:27px 28px 32px;color:#777;font-size:12px;line-height:1.8;">
-                            <strong style="color:#28271f;font-family:Georgia,'Times New Roman',serif;letter-spacing:2px;">MAISON SEREIN</strong><br>
+                            <strong style="color:#292B27;font-family:Georgia,'Times New Roman',serif;font-size:13px;letter-spacing:1.5px;"><span style="display:block;">THE LAST</span><span style="display:block;">NOTE BD</span></strong>
+                            <span style="display:block;color:#292B27;font-size:10px;letter-spacing:1.5px;">AUTHENTIC FRAGRANCE DECANT HOUSE</span><br>
                             Thank you for choosing us. We hope your new fragrance becomes part of a beautiful ritual.
                             <?php if ($supportEmail !== '' || $supportPhone !== ''): ?><br>Customer care: <?= $supportEmail !== '' ? $escape($supportEmail) : '' ?><?= $supportEmail !== '' && $supportPhone !== '' ? ' · ' : '' ?><?= $supportPhone !== '' ? $escape($supportPhone) : '' ?><?php endif; ?>
                         </td>

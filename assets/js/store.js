@@ -23,12 +23,14 @@
     if (form.dataset.submitting === 'true') return;
     form.dataset.submitting = 'true';
     const submitter = event.submitter;
-    if (submitter) submitter.disabled = true;
     writeMessage(form, '');
     try {
+      const formData = new FormData(form);
+      if (submitter?.name) formData.append(submitter.name, submitter.value);
+      if (submitter) submitter.disabled = true;
       const response = await fetch(form.getAttribute('action'), {
         method: 'POST',
-        body: new FormData(form, submitter || undefined),
+        body: formData,
         headers: { Accept: 'application/json' },
         credentials: 'same-origin',
       });
@@ -184,7 +186,7 @@
       event.preventDefault();
       if (!form.reportValidity()) return;
       const fields = new FormData(form);
-      const subject = String(fields.get('subject') || 'Message to Maison Serein');
+      const subject = String(fields.get('subject') || 'Message to THE LAST NOTE BD');
       const body = [
         `Name: ${fields.get('name') || ''}`,
         `Email: ${fields.get('email') || ''}`,
@@ -237,6 +239,57 @@
     menuButton?.setAttribute('aria-label', 'Open navigation');
     mainNav.classList.remove('is-open');
   }));
+
+  const adminSidebar = document.querySelector('#admin-sidebar');
+  const adminMenuToggle = document.querySelector('[data-admin-menu-toggle]');
+  const adminMenuClose = document.querySelector('[data-admin-menu-close]');
+  const adminMenuBackdrop = document.querySelector('[data-admin-menu-backdrop]');
+  const adminMobileQuery = window.matchMedia('(max-width: 767px)');
+  const setAdminMenuOpen = (open) => {
+    if (!adminSidebar || !adminMenuToggle || !adminMobileQuery.matches) return;
+    adminSidebar.classList.toggle('is-open', open);
+    adminSidebar.setAttribute('aria-hidden', String(!open));
+    adminSidebar.inert = !open;
+    adminMenuToggle.setAttribute('aria-expanded', String(open));
+    adminMenuToggle.setAttribute('aria-label', open ? 'Close studio navigation' : 'Open studio navigation');
+    if (adminMenuBackdrop) adminMenuBackdrop.hidden = !open;
+    document.body.classList.toggle('admin-menu-open', open);
+  };
+  const syncAdminMenuViewport = () => {
+    if (!adminSidebar) return;
+    if (adminMobileQuery.matches) {
+      setAdminMenuOpen(false);
+    } else {
+      adminSidebar.classList.remove('is-open');
+      adminSidebar.removeAttribute('aria-hidden');
+      adminSidebar.inert = false;
+      adminMenuToggle?.setAttribute('aria-expanded', 'false');
+      if (adminMenuBackdrop) adminMenuBackdrop.hidden = true;
+      document.body.classList.remove('admin-menu-open');
+    }
+  };
+  adminMenuToggle?.addEventListener('click', () => {
+    setAdminMenuOpen(adminMenuToggle.getAttribute('aria-expanded') !== 'true');
+  });
+  adminMenuClose?.addEventListener('click', () => {
+    setAdminMenuOpen(false);
+    adminMenuToggle?.focus();
+  });
+  adminMenuBackdrop?.addEventListener('click', () => {
+    setAdminMenuOpen(false);
+    adminMenuToggle?.focus();
+  });
+  adminSidebar?.querySelectorAll('nav a').forEach((link) => link.addEventListener('click', () => {
+    setAdminMenuOpen(false);
+  }));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && adminSidebar?.classList.contains('is-open')) {
+      setAdminMenuOpen(false);
+      adminMenuToggle?.focus();
+    }
+  });
+  adminMobileQuery.addEventListener('change', syncAdminMenuViewport);
+  syncAdminMenuViewport();
 
   const paymentField = document.querySelector('[data-transaction-field]');
   const paymentRadios = document.querySelectorAll('input[name="payment_method"]');
@@ -680,4 +733,91 @@
       if (window.matchMedia('(min-width: 901px)').matches && filterShell.classList.contains('is-open')) closeFilterDrawer(false);
     });
   }
+})();
+
+(() => {
+  const connectWidget = document.querySelector('[data-connect-widget]');
+  const progressButton = document.querySelector('[data-scroll-progress]');
+  const progressRing = document.querySelector('[data-scroll-progress-ring]');
+  const hero = document.getElementById('homepage-hero');
+
+  if (connectWidget) {
+    const toggle = connectWidget.querySelector('[data-connect-toggle]');
+    const menu = connectWidget.querySelector('[data-connect-orbit]');
+    let isOpen = false;
+
+    const setOpen = (open, restoreFocus = false) => {
+      isOpen = open;
+      if (isOpen) menu.scrollTop = menu.scrollHeight;
+      connectWidget.classList.toggle('is-open', isOpen);
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      const label = isOpen ? 'Close contact links' : 'Open contact links';
+      toggle.setAttribute('aria-label', label);
+      toggle.querySelector('[data-connect-label]').textContent = label;
+      menu.setAttribute('aria-hidden', String(!isOpen));
+      menu.inert = !isOpen;
+      if (restoreFocus) toggle.focus();
+    };
+
+    toggle.addEventListener('click', () => setOpen(!isOpen));
+    menu.addEventListener('click', (event) => {
+      if (event.target.closest('.connect-contact-link')) setOpen(false);
+    });
+    document.addEventListener('pointerdown', (event) => {
+      if (isOpen && !connectWidget.contains(event.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', (event) => {
+      if (isOpen && event.key === 'Escape') setOpen(false, true);
+    });
+  }
+
+  if (!progressButton || !progressRing) return;
+
+  const circumference = 2 * Math.PI * 21;
+  progressRing.style.strokeDasharray = String(circumference);
+  const returnLabel = hero ? 'Scroll to homepage hero' : 'Scroll to top';
+  progressButton.setAttribute('aria-label', returnLabel);
+  progressButton.title = hero ? 'Back to the homepage hero' : 'Back to top';
+  progressButton.hidden = false;
+
+  const updateProgress = () => {
+    const root = document.documentElement;
+    const scrollableHeight = Math.max(0, root.scrollHeight - root.clientHeight);
+    const scrollTop = Math.max(0, window.scrollY || root.scrollTop);
+    const progress = scrollableHeight === 0 ? 0 : Math.min(1, scrollTop / scrollableHeight);
+    progressRing.style.strokeDashoffset = String(circumference * (1 - progress));
+    progressButton.dataset.progress = String(progress);
+  };
+
+  let progressFrame = 0;
+  const scheduleProgressUpdate = () => {
+    if (progressFrame) return;
+    progressFrame = window.requestAnimationFrame(() => {
+      progressFrame = 0;
+      updateProgress();
+    });
+  };
+
+  updateProgress();
+  window.addEventListener('scroll', scheduleProgressUpdate, { passive: true });
+  window.addEventListener('resize', scheduleProgressUpdate, { passive: true });
+  window.addEventListener('load', scheduleProgressUpdate, { once: true });
+
+  if (window.ResizeObserver) {
+    const resizeObserver = new ResizeObserver(scheduleProgressUpdate);
+    resizeObserver.observe(document.documentElement);
+    if (document.body) resizeObserver.observe(document.body);
+  }
+  if (document.body && window.MutationObserver) {
+    const contentObserver = new MutationObserver(scheduleProgressUpdate);
+    contentObserver.observe(document.body, { childList: true, subtree: true });
+  }
+
+  progressButton.addEventListener('click', () => {
+    const main = hero?.closest('main');
+    const heroIsFirstSection = hero && main && main.firstElementChild === hero;
+    const heroTop = hero ? hero.getBoundingClientRect().top + window.scrollY : 0;
+    const targetTop = heroIsFirstSection ? 0 : heroTop;
+    window.scrollTo({ top: Math.max(0, targetTop), behavior: 'smooth' });
+  });
 })();

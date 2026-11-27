@@ -1,6 +1,6 @@
-# Maison Serein — Perfume E-Commerce
+# THE LAST NOTE BD — Perfume E-Commerce
 
-Maison Serein is a server-rendered perfume storefront and staff studio built for Core PHP and MySQL/MariaDB. It supports guest shopping and checkout, optional customer accounts, order tracking, and administrator-managed catalogue and operations. It runs locally on XAMPP without a JavaScript framework or frontend build step.
+THE LAST NOTE BD is a server-rendered perfume storefront and staff studio built for Core PHP and MySQL/MariaDB. It supports guest shopping and checkout, optional customer accounts, order tracking, and administrator-managed catalogue and operations. It runs locally on XAMPP without a JavaScript framework or frontend build step.
 
 ## Contents
 
@@ -83,7 +83,7 @@ MAIL_USERNAME=your-brevo-smtp-login
 MAIL_PASSWORD=your-brevo-smtp-key
 MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS=verified-sender@example.com
-MAIL_FROM_NAME="Maison Serein"
+MAIL_FROM_NAME="THE LAST NOTE BD"
 ```
 
 Verify the sender address or domain in Brevo. The email is sent only after the order transaction commits; an SMTP failure leaves the order intact, records a failed attempt, and is not reported to the customer as a sent email. Administrators can inspect email status and retry eligible failures in **Studio → Orders**. Product images are included only when a public HTTPS URL can be formed; configure `APP_URL` with the production HTTPS origin for deployed email images.

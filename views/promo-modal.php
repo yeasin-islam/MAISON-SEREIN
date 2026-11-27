@@ -12,7 +12,7 @@ if ($hasConfiguredPopups) {
   $popupImageAlt = '';
 } else {
   $popupItems = [[
-    'title' => 'Welcome to Maison Serein',
+    'title' => 'Welcome to THE LAST NOTE BD',
     'subtitle' => 'Discover thoughtful fragrances and find a scent that feels like your own.',
     'image_path' => 'assets/images/atelier-hero.png',
     'cta_label' => 'Explore the collection',

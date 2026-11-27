@@ -2070,7 +2070,7 @@ VALUES
     ),
     (
         10,
-        'The Serein signature',
+        'The Last Note signature',
         'Find the fragrance that feels like yours.',
         'https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1600&q=85',
         'Explore',
@@ -2149,7 +2149,7 @@ VALUES
 INSERT INTO
     store_settings (setting_key, setting_value)
 VALUES
-    ('store_name', 'Maison Serein'),
+    ('store_name', 'THE LAST NOTE BD'),
     ('store_tagline', 'Fragrance, considered.'),
     ('store_address', 'Dhaka, Bangladesh'),
     ('currency', 'BDT'),
@@ -2159,11 +2159,11 @@ VALUES
     ('popup_delay_seconds', '4'),
     (
         'default_meta_title',
-        'Maison Serein | Fragrance, considered.'
+        'THE LAST NOTE BD | AUTHENTIC FRAGRANCE DECANT HOUSE'
     ),
     (
         'default_meta_description',
-        'Discover thoughtful fragrance compositions from Maison Serein.'
+        'Discover authentic fragrance decants from THE LAST NOTE BD.'
     );
 
 -- Add 9 limited drops (the original dump already has one).

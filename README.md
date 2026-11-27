@@ -1,6 +1,6 @@
-# Maison Serein (Perfume E-Commerce)
+# THE LAST NOTE BD (Perfume E-Commerce)
 
-Maison Serein is a server-rendered perfume storefront and administration studio built with Core PHP and MySQL/MariaDB. It supports catalogue browsing, guest and customer shopping, checkout, order tracking, and staff-managed store operations. The project is designed to run on Apache/XAMPP and does not require a frontend framework or JavaScript build process.
+THE LAST NOTE BD is a server-rendered perfume storefront and administration studio built with Core PHP and MySQL/MariaDB. It supports catalogue browsing, guest and customer shopping, checkout, order tracking, and staff-managed store operations. The project is designed to run on Apache/XAMPP and does not require a frontend framework or JavaScript build process.
 
 > **Project status:** This README documents the application as currently implemented. Payment-provider automation, a server-side contact form, newsletter campaigns, and product-level sale-price fields are not currently part of the application.
 
@@ -35,7 +35,7 @@ The application brings catalogue discovery, stock-aware shopping, delivery-zone 
 
 ### Objectives
 
-- Present Maison Serein products and fragrance information in a responsive storefront.
+- Present THE LAST NOTE BD products and fragrance information in a responsive storefront.
 - Support guest and registered-customer purchase flows.
 - Keep order totals, inventory, coupons, and delivery fees consistent with the database.
 - Give administrators tools for catalogue, order, payment-review, inventory, content, and reporting tasks.
@@ -421,7 +421,7 @@ The environment loader reads the root `.env`. Never publish `.env` or use real s
 
 | Variable | Purpose | Typical local value |
 |---|---|---|
-| `APP_NAME` | Store name shown in shared page chrome. | `Maison Serein` |
+| `APP_NAME` | Store name shown in shared page chrome. | `THE LAST NOTE BD` |
 | `APP_TIMEZONE` | PHP default timezone for date/time operations. | `Asia/Dhaka` |
 | `APP_URL` | Public base URL used when building email image links. | `http://localhost/perfume-ecommerce` |
 | `DB_HOST` | MySQL/MariaDB host. | `127.0.0.1` |
@@ -443,7 +443,7 @@ MAIL_USERNAME=your-brevo-smtp-login
 MAIL_PASSWORD=your-brevo-smtp-key
 MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS=verified-sender@example.com
-MAIL_FROM_NAME="Maison Serein"
+MAIL_FROM_NAME="THE LAST NOTE BD"
 ```
 
 In Brevo, create or locate the SMTP key and SMTP login, verify the sender/domain, then copy those values into `.env`. Do not place credentials in PHP, JavaScript, HTML, screenshots, issue reports, or a committed environment file. If an SMTP credential has ever been exposed, revoke/rotate it with the provider.
@@ -548,7 +548,7 @@ The repository does not establish contributor names or academic/project affiliat
 
 <!-- **Project information**
 
-- Project: Maison Serein Perfume E-Commerce
+- Project: THE LAST NOTE BD Perfume E-Commerce
 - Project type: Core PHP e-commerce web application
 - Institution/course/supervisor: `[Add only if applicable and verified]`
 - Repository/version/release: `[Add the current verified value]` -->

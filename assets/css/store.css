@@ -1,15 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap");
 
 :root {
-  --ink: #202321;
+  --ink: #292B27;
   --ink-soft: #555b55;
-  --paper: #f5f2ed;
+  --paper: #F7F4EC;
   --paper-deep: #ece7de;
   --white: #fffdfa;
   --line: #ded8cd;
-  --bronze: #9a7950;
-  --bronze-dark: #755a39;
-  --green: #536254;
+  --bronze: #B89A63;
+  --bronze-dark: #183A32;
+  --green: #183A32;
   --serif: "Playfair Display", Georgia, serif;
   --sans: "DM Sans", Arial, sans-serif;
   --content: 1280px;
@@ -115,6 +115,11 @@ textarea:focus-visible {
   font-family: var(--serif);
   font-weight: 400;
   letter-spacing: 0.28em;
+}
+.brand-lockup .brand-name,
+.brand-lockup .brand-name > span {
+  font-family: var(--serif);
+  letter-spacing: 0.08em;
 }
 .wordmark small {
   margin-top: 6px;
@@ -1315,8 +1320,8 @@ textarea:focus-visible {
   width: min(420px, calc(100% - 32px));
 }
 .admin-login-wrap > .wordmark {
-  margin: 0 auto 26px;
-  text-align: center;
+  margin: 0 auto 22px;
+  text-align: left;
 }
 .admin-login-card {
   padding: 34px;

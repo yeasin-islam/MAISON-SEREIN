@@ -20,7 +20,7 @@ if ($page !== 'faq') {
     } catch (Throwable $error) {
         $databaseAvailable = false;
         $settings = [];
-        error_log('[Maison Serein] Store database unavailable: ' . $error->getMessage());
+        error_log('[THE LAST NOTE BD] Store database unavailable: ' . $error->getMessage());
     }
 }
 $storeContactEmail = trim((string) ($settings['store_email'] ?? ''));
@@ -147,11 +147,11 @@ if ($store) {
             $filterError = $error->getMessage();
         } else {
             $databaseAvailable = false;
-            error_log('[Maison Serein] Store query failed: ' . $error->getMessage());
+            error_log('[THE LAST NOTE BD] Store query failed: ' . $error->getMessage());
         }
     } catch (Throwable $error) {
         $databaseAvailable = false;
-        error_log('[Maison Serein] Store query failed: ' . $error->getMessage());
+        error_log('[THE LAST NOTE BD] Store query failed: ' . $error->getMessage());
     }
 }
 

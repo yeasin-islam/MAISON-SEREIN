@@ -1,7 +1,7 @@
 <?php
 $hero = $heroBanners[0] ?? ['title' => 'A quieter kind of luxury.', 'subtitle' => 'Fragrance for the moments that are yours.', 'image_path' => 'assets/images/atelier-hero.png', 'cta_label' => 'Discover the collection', 'cta_url' => '?page=shop'];
 ?>
-<section class="hero"><img class="hero-image" src="<?= h($hero['image_path']) ?>" alt="" fetchpriority="high">
+<section class="hero" id="homepage-hero"><img class="hero-image" src="<?= h($hero['image_path']) ?>" alt="" fetchpriority="high">
   <div class="hero-copy"><span class="eyebrow">A fragrance house, in its own time</span>
     <h1><?= nl2br(h($hero['title'])) ?></h1>
     <p><?= h($hero['subtitle']) ?></p><a class="button button-dark" href="<?= h(safe_link_url($hero['cta_url'] ?? '', app_url('shop'))) ?>"><?= h($hero['cta_label'] ?: 'Explore the collection') ?><span aria-hidden="true">↗</span></a>
@@ -73,7 +73,7 @@ endforeach;
 ?>
 <section class="story-band">
   <div class="story-image" role="img" aria-label="Warm amber perfume bottle in a sunlit atelier"></div>
-  <div class="story-copy"><span class="eyebrow">The Serein way</span>
+  <div class="story-copy"><span class="eyebrow">The Last Note way</span>
     <h2>Less, but with<br>more feeling.</h2>
     <p>We make small, thoughtful compositions for the everyday rituals that deserve to be noticed. Made slowly. Worn close.</p><a class="text-link" href="<?= h(app_url('about')) ?>">A little about us <span aria-hidden="true">→</span></a>
   </div>
@@ -86,16 +86,34 @@ endforeach;
   </div>
 </section>
 <section class="quote-band"><span class="eyebrow">A note from the house</span>
-  <blockquote>“The most beautiful things stay with you quietly.”</blockquote><span class="quote-source">The Maison Serein philosophy</span>
+  <blockquote>“The most beautiful things stay with you quietly.”</blockquote><span class="quote-source">THE LAST NOTE BD philosophy</span>
 </section>
 
 <?php require __DIR__ . '/promo-modal.php'; ?>
-<?php if ($socialLinks): ?><details class="social-float">
-    <summary class="connect-summary" aria-label="Connect with Maison Serein" title="Connect with Maison Serein"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="18" cy="5" r="3" />
-        <circle cx="6" cy="12" r="3" />
-        <circle cx="18" cy="19" r="3" />
-        <path d="m8.59 13.51 6.83 3.98M15.41 6.51l-6.82 3.98" />
-      </svg><span>Connect</span></summary>
-    <div class="social-float-links" aria-label="Social media links"><?php foreach ($socialLinks as $social): ?><a href="<?= h(safe_link_url($social['url'], '#')) ?>" target="_blank" rel="noopener noreferrer"><?= h(ucfirst($social['platform'])) ?> <span aria-hidden="true">↗</span></a><?php endforeach; ?></div>
-  </details><?php endif; ?>
+<?php
+$connectLinks = [];
+foreach ($socialLinks as $social) {
+    $name = (string) ($social['platform'] ?? '');
+    $url = safe_link_url((string) ($social['url'] ?? ''), '');
+    if (trim($name) !== '' && $url !== '') {
+        $connectLinks[] = ['name' => $name, 'url' => $url];
+    }
+}
+?>
+<?php if ($connectLinks): ?><div class="connect-widget" data-connect-widget>
+  <button class="connect-toggle" type="button" aria-label="Open contact links" aria-expanded="false" aria-controls="connect-orbit" data-connect-toggle>
+    <svg class="connect-open-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H6l-3 2 1-4A7.5 7.5 0 1 1 20 11.5Z" />
+      <path d="M8 11.5h.01M12 11.5h.01M16 11.5h.01" stroke-width="2.5" />
+    </svg>
+    <svg class="connect-close-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round">
+      <path d="m6 6 12 12M18 6 6 18" />
+    </svg>
+    <span class="sr-only" data-connect-label>Open contact links</span>
+  </button>
+  <nav class="connect-orbit" id="connect-orbit" aria-label="Contact links" aria-hidden="true" inert data-connect-orbit>
+    <?php foreach (array_reverse($connectLinks) as $contact): ?>
+      <a class="connect-contact-link" href="<?= h($contact['url']) ?>"<?= str_starts_with(strtolower($contact['url']), 'https://') ? ' target="_blank" rel="noopener noreferrer"' : '' ?>><?= h($contact['name']) ?></a>
+    <?php endforeach; ?>
+  </nav>
+</div><?php endif; ?>

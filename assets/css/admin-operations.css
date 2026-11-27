@@ -2,6 +2,292 @@
   overflow-y: auto;
   overscroll-behavior: contain;
 }
+
+.admin-body {
+  min-height: 100vh;
+  background: var(--paper);
+}
+.admin-sidebar {
+  z-index: 40;
+  width: 250px;
+  padding: 28px 20px 20px;
+  background: #183A32;
+  color: #F7F4EC;
+  overflow-x: hidden;
+}
+.admin-sidebar-brand-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0 0 22px;
+  border-bottom: 1px solid rgba(247, 244, 236, 0.2);
+}
+.admin-sidebar .brand-lockup {
+  min-width: 0;
+  gap: 9px;
+}
+.admin-sidebar .brand-lockup .brand-logo {
+  width: 40px;
+  height: 40px;
+  padding: 2px;
+  border-radius: 50%;
+  border: 1px solid #B89A63;
+  background: #F7F4EC;
+}
+.admin-sidebar .brand-lockup .brand-name,
+.admin-sidebar .brand-lockup .brand-name > span {
+  color: #F7F4EC;
+}
+.admin-sidebar .brand-lockup small {
+  max-width: 155px;
+  color: #D8D0C1;
+  font-size: 6.5px;
+  letter-spacing: 0.1em;
+  white-space: normal;
+}
+.admin-sidebar-close {
+  display: none;
+}
+.admin-sidebar nav {
+  flex: 1 1 auto;
+  min-height: 0;
+  gap: 4px;
+  margin: 22px -8px 14px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-color: rgba(247, 244, 236, 0.35) transparent;
+}
+.admin-sidebar nav a {
+  min-height: 40px;
+  padding: 10px 12px;
+  border-radius: 3px;
+  color: #E1E3DC;
+  font-size: 12px;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+.admin-sidebar nav a:hover,
+.admin-sidebar nav a:focus-visible {
+  background: rgba(247, 244, 236, 0.12);
+  color: #FFFFFF;
+}
+.admin-sidebar nav a.is-current {
+  background: rgba(247, 244, 236, 0.18);
+  color: #FFFFFF;
+  box-shadow: inset 3px 0 #B89A63;
+}
+.admin-store-link {
+  margin-top: 0;
+  border-top: 1px solid rgba(247, 244, 236, 0.2);
+  color: #E1D8C8;
+}
+.admin-logout {
+  flex: 0 0 auto;
+  margin-top: 4px;
+}
+.admin-logout button {
+  border-radius: 3px;
+  color: #E1E3DC;
+}
+.admin-logout button:hover,
+.admin-logout button:focus-visible {
+  background: rgba(247, 244, 236, 0.12);
+  color: #FFFFFF;
+}
+.admin-main {
+  min-width: 0;
+  margin-left: 250px;
+  overflow-x: clip;
+}
+.admin-topbar {
+  min-width: 0;
+}
+.admin-menu-toggle,
+.admin-sidebar-backdrop {
+  display: none;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .admin-sidebar {
+    width: 220px;
+    padding-inline: 16px;
+  }
+  .admin-sidebar .brand-lockup {
+    gap: 7px;
+  }
+  .admin-sidebar .brand-lockup .brand-logo {
+    width: 36px;
+    height: 36px;
+  }
+  .admin-sidebar .brand-lockup .brand-name,
+  .admin-sidebar .brand-lockup .brand-name > span {
+    font-size: 12px;
+  }
+  .admin-sidebar .brand-lockup small {
+    font-size: 6px;
+  }
+  .admin-main {
+    margin-left: 220px;
+  }
+  .admin-topbar {
+    padding-inline: 24px;
+  }
+  .admin-content {
+    padding-inline: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  body.admin-menu-open {
+    overflow: hidden;
+  }
+  .admin-sidebar-backdrop:not([hidden]) {
+    position: fixed;
+    z-index: 39;
+    inset: 0;
+    display: block;
+    border: 0;
+    background: rgba(16, 20, 17, 0.62);
+    cursor: pointer;
+  }
+  .admin-sidebar {
+    position: fixed;
+    z-index: 40;
+    inset: 0 auto 0 0;
+    display: flex;
+    width: min(320px, 86vw);
+    height: 100vh;
+    height: 100dvh;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: max(18px, env(safe-area-inset-top)) 18px max(16px, env(safe-area-inset-bottom));
+    overflow: hidden;
+    box-shadow: 16px 0 42px rgba(0, 0, 0, 0.2);
+    transform: translateX(-105%);
+    transition: transform 0.24s ease;
+    visibility: hidden;
+  }
+  .admin-sidebar.is-open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+  .admin-sidebar-brand-row {
+    flex: 0 0 auto;
+    padding-bottom: 18px;
+  }
+  .admin-sidebar .brand-lockup .brand-logo {
+    width: 40px;
+    height: 40px;
+  }
+  .admin-sidebar .brand-lockup .brand-name,
+  .admin-sidebar .brand-lockup .brand-name > span {
+    font-size: 13px;
+  }
+  .admin-sidebar .brand-lockup small {
+    max-width: 175px;
+    font-size: 6.3px;
+  }
+  .admin-sidebar-close {
+    display: grid;
+    flex: 0 0 auto;
+    width: 36px;
+    height: 36px;
+    place-items: center;
+    border: 1px solid rgba(247, 244, 236, 0.32);
+    border-radius: 50%;
+    background: transparent;
+    color: #F7F4EC;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .admin-sidebar-close:hover,
+  .admin-sidebar-close:focus-visible {
+    background: rgba(247, 244, 236, 0.14);
+  }
+  .admin-sidebar nav {
+    display: grid;
+    flex: 1 1 auto;
+    min-height: 0;
+    gap: 4px;
+    margin: 18px -8px 12px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .admin-sidebar nav a {
+    min-height: 42px;
+    padding: 11px 13px;
+    font-size: 13px;
+  }
+  .admin-store-link {
+    display: block;
+    flex: 0 0 auto;
+    padding: 14px 12px;
+  }
+  .admin-logout {
+    flex: 0 0 auto;
+    margin-top: 0;
+  }
+  .admin-logout button {
+    min-height: 42px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+  .admin-main {
+    width: 100%;
+    margin: 0;
+    overflow-x: clip;
+  }
+  .admin-topbar {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    align-items: center;
+    justify-content: start;
+    gap: 12px;
+    min-height: 82px;
+    padding: 13px 16px;
+  }
+  .admin-menu-toggle {
+    display: flex;
+    width: 42px;
+    height: 42px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    background: var(--white);
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .admin-menu-toggle span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+  }
+  .admin-topbar > div {
+    min-width: 0;
+  }
+  .admin-topbar h1 {
+    overflow-wrap: anywhere;
+  }
+  .admin-content {
+    min-width: 0;
+    padding: 16px 14px 30px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-sidebar {
+    transition: none;
+  }
+}
+
 .admin-toolbar {
   display: flex;
   flex-wrap: wrap;

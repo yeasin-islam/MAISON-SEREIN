@@ -507,7 +507,7 @@ INSERT INTO
 VALUES
   (
     1,
-    'Maison Serein',
+    'THE LAST NOTE BD',
     'maison-serein',
     'Modern fragrance, considered slowly.'
   ),

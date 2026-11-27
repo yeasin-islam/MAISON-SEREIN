@@ -6,16 +6,21 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f2ed">
-  <title>Studio sign in — Maison Serein</title>
+  <title>Studio sign in — THE LAST NOTE BD</title>
+  <link rel="icon" href="../assets/images/the-last-note-logo.svg" type="image/svg+xml">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/store.css">
+  <link rel="stylesheet" href="../assets/css/store.css?v=2">
   <link rel="stylesheet" href="../assets/css/store-interactions.css">
+  <link rel="stylesheet" href="../assets/css/store-redesign.css?v=19">
   <link rel="stylesheet" href="../assets/css/store-account.css">
   <link rel="stylesheet" href="../assets/css/store-extras.css">
 </head>
 
 <body class="admin-login-page">
-  <main class="admin-login-wrap"><a class="wordmark" href="../index.php">MAISON <span>SEREIN</span><small>STUDIO ACCESS</small></a>
+  <main class="admin-login-wrap"><a class="wordmark brand-lockup" href="../index.php" aria-label="THE LAST NOTE BD admin">
+      <img class="brand-logo" src="../assets/images/the-last-note-logo.svg" alt="" width="44" height="44">
+      <span class="brand-copy"><span class="brand-name"><span>THE LAST</span><span>NOTE BD</span></span><small>AUTHENTIC FRAGRANCE DECANT HOUSE</small></span>
+    </a>
     <div class="admin-login-card"><span class="eyebrow">The house, behind the scenes</span>
       <h1>Welcome in.</h1>
       <p>Sign in to manage your store.</p>

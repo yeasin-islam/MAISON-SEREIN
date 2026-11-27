@@ -56,7 +56,7 @@ final class OrderConfirmationEmailService
             $update->execute(['id' => $orderId]);
             return ['status' => 'sent'];
         } catch (Throwable $error) {
-            error_log('[Maison Serein] Email sent but confirmation status could not be saved for order ' . $orderId . ' (' . get_class($error) . ').');
+            error_log('[THE LAST NOTE BD] Email sent but confirmation status could not be saved for order ' . $orderId . ' (' . get_class($error) . ').');
             return ['status' => 'sending'];
         }
     }
@@ -178,11 +178,11 @@ final class OrderConfirmationEmailService
         $mailer->CharSet = 'UTF-8';
         $mailer->setFrom(
             $fromAddress,
-            trim((string) (getenv('MAIL_FROM_NAME') ?: 'Maison Serein'))
+            trim((string) (getenv('MAIL_FROM_NAME') ?: 'THE LAST NOTE BD'))
         );
         $mailer->addAddress((string) $order['email'], (string) $order['customer_name']);
         $mailer->isHTML(true);
-        $mailer->Subject = 'Order Confirmation – Maison Serein | Order #' . $order['id'];
+        $mailer->Subject = 'Order Confirmation – THE LAST NOTE BD | Order #' . $order['id'];
         $mailer->Body = $htmlBody;
         $mailer->AltBody = $textBody;
         $mailer->send();
@@ -228,7 +228,7 @@ final class OrderConfirmationEmailService
 
     private function recordFailure(int $orderId, Throwable $error): void
     {
-        error_log('[Maison Serein] Order confirmation email failed for order ' . $orderId . ' (' . get_class($error) . ').');
+        error_log('[THE LAST NOTE BD] Order confirmation email failed for order ' . $orderId . ' (' . get_class($error) . ').');
         try {
             $stmt = $this->pdo->prepare(
                 'UPDATE order_email_notifications
@@ -237,7 +237,7 @@ final class OrderConfirmationEmailService
             );
             $stmt->execute(['id' => $orderId]);
         } catch (Throwable $recordError) {
-            error_log('[Maison Serein] Could not record order email failure for order ' . $orderId . ' (' . get_class($recordError) . ').');
+            error_log('[THE LAST NOTE BD] Could not record order email failure for order ' . $orderId . ' (' . get_class($recordError) . ').');
         }
     }
 }
