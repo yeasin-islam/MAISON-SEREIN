@@ -1,0 +1,9 @@
+.env
+.env.local
+/uploads/*
+!/uploads/.gitkeep
+/assets/uploads/products/*
+!/assets/uploads/products/.htaccess
+*.log
+.DS_Store
+vendor/
